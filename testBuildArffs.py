@@ -3,6 +3,13 @@
 import subprocess
 import sys
 
+print "\nBuilding cnncbc.arff"
+subprocess.call([sys.executable, 'buildarff.py',
+    '-100',
+    'cnn:twtts/cnn.twt',
+    'cbc:twtts/CBCNews.twt',
+    'arffs/cnncbc.arff'])
+
 
 print "\nBuilding celebritypotpourri.arff:"
 subprocess.call([sys.executable, 'buildarff.py',

@@ -93,8 +93,15 @@ def write_attribute_definitions_to_file(file, class_name_string):
     """Use the feature_list to write an attribute definition table to the file.
     """
     file.write("@relation " + relation_name + "\n\n")
+    attribute_list = []
+    for i in feature_list:
+        # append some value for everything in the list to make sure it
+        # stays in range.
+        attribute_list.append('-1')
     for feature, stuff in feature_list.iteritems():
-        file.write("@attribute " + feature + " numeric\n")
+        attribute_list[stuff[3]] = feature
+    for attribute in attribute_list:
+        file.write("@attribute " + attribute + " numeric\n")
 
     file.write("@attribute class " + class_name_string + "\n\n")
 
@@ -339,7 +346,7 @@ def main():
             complete_tweet = ""
             for line in twttfile:
                 if (line.strip() != "|"):
-                    complete_tweet += line + "\n"
+                    complete_tweet += line
                 else:
                     # print complete_tweet
                     file_arff.write(extract_features(complete_tweet.strip()) +\
