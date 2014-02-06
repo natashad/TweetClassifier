@@ -7,9 +7,12 @@ import sys
 # HASHTG : Hashtags
 # EMOT : emoticons
 # MULTIPUNC : Multipl Punctuation
+# NUMB : Numbers (including decimals and things with ,s e.g. 1,000)
 
 
+# Some files used.
 emoticon_file = 'Wordlists/__emoticons__'
+abbrev_filename = "Wordlists/abbrev.english"
 
 #punctuation and symbols
 punctuation = [',', ';', ':', '~', '@', '#', '$', '%', '^', '&',
@@ -25,6 +28,7 @@ mention_sub = "__mention__"
 hashtag_sub = "__hashtag__"
 
 number_sub = "__number__"
+
 
 
 def remove_anchor_tags(tweet):
@@ -100,7 +104,7 @@ def break_sentence(tweet):
        ignore the abbrev if it is followed by a single '.'.
     """
 
-    file_abbrev = open("Wordlists/abbrev.english", "r")
+    file_abbrev = open(abbrev_filename, "r")
     abbrevs = []
     for abbrev in file_abbrev:
         abbrevs.append(abbrev.lower().strip())
@@ -132,6 +136,8 @@ def break_sentence(tweet):
             pos = boundary[2]
     if pos < len(subbed_tweet):
         broken_up_tweet += subbed_tweet[pos:len(subbed_tweet)].strip()
+
+    file_abbrev.close()
     return broken_up_tweet.strip()
 
 
@@ -230,6 +236,6 @@ else:
         tweet = pre_process_tweet(line)
         file_o.write(tweet)
         file_o.write('\n|\n')
+    file_i.close()
+    file_o.close()
 
-#TODO: Tag multiple punctuation things with a different tag instead of NN
-#TODO: Close all opened files

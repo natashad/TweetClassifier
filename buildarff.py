@@ -109,6 +109,7 @@ def read_file_to_list(filename):
             # print (re.escape(line.strip()))
             ret_list.append(re.escape(line.strip()))
 
+    file.close()
     return ret_list
 
 def process_feature_list():
@@ -347,7 +348,9 @@ def main():
                     num_tweets_read+=1;
                     if num_tweets_per_file >= 0 and num_tweets_read == num_tweets_per_file:
                             break
+            twttfile.close()
             # print num_tweets_read
+    file_arff.close()
 
 if __name__ == "__main__":
     main()

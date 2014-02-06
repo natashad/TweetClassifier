@@ -37,6 +37,6 @@ subprocess.call([sys.executable, 'buildarff.py',
 
 print "\nBuilding popvsnews.arff:"
 subprocess.call([sys.executable, 'buildarff.py',
-    'Popstarts:twtts/britneyspears.twt+twtts/justinbieber.twt+twtts/katyperry.twt+twtts/ladygaga.twt+twtts/rihanna.twt+twtts/taylorswift13.twt',
+    'Popstars:twtts/britneyspears.twt+twtts/justinbieber.twt+twtts/katyperry.twt+twtts/ladygaga.twt+twtts/rihanna.twt+twtts/taylorswift13.twt',
     'News:twtts/CBCNews.twt+twtts/cnn.twt+twtts/torontostarnews.twt+twtts/Reuters.twt+twtts/nytimes.twt+twtts/TheOnion.twt',
     'arffs/popvsnews.arff'])
