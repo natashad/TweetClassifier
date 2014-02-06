@@ -1,0 +1,24 @@
+@relation tweet_feets
+
+@attribute proper-nouns numeric
+@attribute colons-semicolons numeric
+@attribute 3person numeric
+@attribute commas numeric
+@attribute coord_conj numeric
+@attribute slang numeric
+@attribute uppercase numeric
+@attribute average-len-sent numeric
+@attribute 2person numeric
+@attribute number-sentences numeric
+@attribute wh-words numeric
+@attribute paranthesis numeric
+@attribute past-tense numeric
+@attribute ellipses numeric
+@attribute common-nouns numeric
+@attribute adverbs numeric
+@attribute future-tense numeric
+@attribute average-len-tokens numeric
+@attribute 1person numeric
+@attribute dashes numeric
+0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,4.0,4.75,1,twtts/justinbieber.twt
+2,0,0,0,0,0,0,0,0,0,0,2,0,0,1,0,0,5.0,2.0,1,twtts/justinbieber.twt

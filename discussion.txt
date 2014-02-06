@@ -1,0 +1,43 @@
+###############################################################################
+#                              3.1 Celebrity Potpurri                         #
+###############################################################################
+
+python buildarff.py Obama:twtts/BarackObama.twt Colbert:twtts/StephenAtHome.twt Ashton:twtts/aplusk.twt Kardashian:twtts/KimKardashian.twt NeilDT:twtts/neiltyson.twt Shakira:twtts/shakira.twt  arffs/celebritypotpourri.arff
+
+java -cp WEKA/weka.jar weka.classifiers.trees.J48 -x 10 -t arffs/celebritypotpourri.arff
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/celebritypotpourri.arff
+
+Best classifier : SVM
+
+
+Build an ar↵ file for distinguishing the following twits: Barack Obama, Stephen Colbert, Ashton Kutcher, Kim Kardashian, Niel deGrasse Tyson, and Shakira (i.e., you have 6 classes). This first experiment involves testing di↵erent classification algorithms. Among support vector machines (SVMs), na ̈ıve Bayes, and decision trees, which is the best for this task? Evaluate using 10-fold cross-validation. You should mention the accuracies in your discussion. Pipe the output of WEKA for the 10-fold cross-validation of the best classifier to the file 3.1output.txt. Use the best classification algorithm for the following questions.
+
+
+###############################################################################
+#                                 3.2 Pop Stars                               #
+###############################################################################
+
+Classify the tweets of the following pop stars: Britney Spears, Justin Bieber, Katy Perry, Lady Gaga, Rihanna, and Taylor Swift. Use only the best classifier from section 3.1, with 10-fold cross validation. How does the accuracy compare to that in section 3.1? Now, instead of 10-fold cross-validation, try using the training set as a test set (note: this is not normally done in practice!) and pipe the output of WEKA to the file 3.2output.txt. Compare accuracies and comment.
+
+python buildarff.py Britney:twtts/britneyspears.twt Bieber:twtts/justinbieber.twt KatyPerry:twtts/katyperry.twt Gaga:twtts/ladygaga.twt Rihanna:twtts/rihanna.twt TSwift:twtts/taylorswift13.twt arffs/popstars.arff
+
+###############################################################################
+#                                   3.3 News                                  #
+###############################################################################
+
+Build an ar↵ file to distinguish these news feeds: CBC, CNN, the Toronto Star, Reuters, the New York Times, and the Onion. Are news feeds easier or harder to distinguish from each other, as compared to the pop stars? Calculate the precision and recall for each of the news feeds, based on the 10-fold cross- validation confusion table, and include them in your discussion. Based on these numbers, which of these news feeds would you say is the most distinct from the others? Which is the least distinct?
+
+python buildarff.py CBC:twtts/CBCNews.twt CNN:twtts/cnn.twt Star:twtts/torontostarnews.twt Reuters:twtts/Reuters.twt NYT:twtts/nytimes.twt Onion:twtts/TheOnion.twt arffs/news.arff
+
+
+###############################################################################
+#                            3.4 Pop Stars versus News                        #
+###############################################################################
+
+python buildarff.py Popstarts:twtts/britneyspears.twt+twtts/justinbieber.twt+twtts/katyperry.twt+twtts/ladygaga.twt+twtts/rihanna.twt+twtts/taylorswift13.twt News:twtts/CBCNews.twt+twtts/cnn.twt+twtts/torontostarnews.twt+twtts/Reuters.twt+twtts/nytimes.twt+twtts/TheOnion.twt arffs/popvsnews.arff
+
+
+###############################################################################
+#                               3.5 Feature Analysis                          #
+###############################################################################
+
