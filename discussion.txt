@@ -2,42 +2,115 @@
 #                              3.1 Celebrity Potpurri                         #
 ###############################################################################
 
-python buildarff.py Obama:twtts/BarackObama.twt Colbert:twtts/StephenAtHome.twt Ashton:twtts/aplusk.twt Kardashian:twtts/KimKardashian.twt NeilDT:twtts/neiltyson.twt Shakira:twtts/shakira.twt  arffs/celebritypotpourri.arff
+The three commands I invoked were:
+java -cp WEKA/weka.jar weka.classifiers.trees.J48 -o -x 10 -t arffs/celebritypotpourri.arff
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -o -x 10 -t arffs/celebritypotpourri.arff
+java -cp WEKA/weka.jar weka.classifiers.bayes.NaiveBayes -o -x 10 -t arffs/celebritypotpourri.arff
 
-java -cp WEKA/weka.jar weka.classifiers.trees.J48 -x 10 -t arffs/celebritypotpourri.arff
-java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/celebritypotpourri.arff
+Using Decision Trees, the accuracy was: 56.8833 %
+Using Naive Bayes, the accuracy was:    53.3667 %
+Using SVM, the accuracy was:            61.9333 %
 
-Best classifier : SVM
+Best classifier : SVM.
 
-
-Build an ar↵ file for distinguishing the following twits: Barack Obama, Stephen Colbert, Ashton Kutcher, Kim Kardashian, Niel deGrasse Tyson, and Shakira (i.e., you have 6 classes). This first experiment involves testing di↵erent classification algorithms. Among support vector machines (SVMs), na ̈ıve Bayes, and decision trees, which is the best for this task? Evaluate using 10-fold cross-validation. You should mention the accuracies in your discussion. Pipe the output of WEKA for the 10-fold cross-validation of the best classifier to the file 3.1output.txt. Use the best classification algorithm for the following questions.
-
+SVM clearly had better accuracy than Decision Trees and Naive Bayes.
 
 ###############################################################################
 #                                 3.2 Pop Stars                               #
 ###############################################################################
 
-Classify the tweets of the following pop stars: Britney Spears, Justin Bieber, Katy Perry, Lady Gaga, Rihanna, and Taylor Swift. Use only the best classifier from section 3.1, with 10-fold cross validation. How does the accuracy compare to that in section 3.1? Now, instead of 10-fold cross-validation, try using the training set as a test set (note: this is not normally done in practice!) and pipe the output of WEKA to the file 3.2output.txt. Compare accuracies and comment.
+The best classifier from section 1 was SVM.
 
-python buildarff.py Britney:twtts/britneyspears.twt Bieber:twtts/justinbieber.twt KatyPerry:twtts/katyperry.twt Gaga:twtts/ladygaga.twt Rihanna:twtts/rihanna.twt TSwift:twtts/taylorswift13.twt arffs/popstars.arff
+I invoked it using the command:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/popstars.arff
+
+The accuracy I got was: 51.0833 %
+
+I then used the training set as the test set by invoking:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -no-cv -t arffs/popstars.arff -T arffs/popstars.arff
+
+The accuracy I got for this was: 52.1 %.
+
+Usually the training set isn't used as the test set. Testing on training data does not give accurate information regarding the classifiers success since it is being tested on data it has already seen before.
+
+In theory using the training set as the test set should give some upper bound on the accuracy with unseen training data. The
+accuracy was only minimally higher than that with cross-validation. By comparing the two and seeing little difference, it means that system is generalizing well to new data and that there is no overfitting occurring.
 
 ###############################################################################
 #                                   3.3 News                                  #
 ###############################################################################
 
-Build an ar↵ file to distinguish these news feeds: CBC, CNN, the Toronto Star, Reuters, the New York Times, and the Onion. Are news feeds easier or harder to distinguish from each other, as compared to the pop stars? Calculate the precision and recall for each of the news feeds, based on the 10-fold cross- validation confusion table, and include them in your discussion. Based on these numbers, which of these news feeds would you say is the most distinct from the others? Which is the least distinct?
+Using SVM, I invoked WEKA with the following command:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/news.arff
 
-python buildarff.py CBC:twtts/CBCNews.twt CNN:twtts/cnn.twt Star:twtts/torontostarnews.twt Reuters:twtts/Reuters.twt NYT:twtts/nytimes.twt Onion:twtts/TheOnion.twt arffs/news.arff
+Compared to pop stars, news feeds seemed harder to distinguish from each other.
 
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   <-- classified as
+ 632  38 147  55  97  31 |   a = CBC
+ 250 188 185 128 134 115 |   b = CNN
+ 436  45 297  81 133   8 |   c = Star
+ 308  72 192 250 127  51 |   d = Reuters
+ 191  52  76  62 574  45 |   e = NYT
+  55 112  46  47 213 527 |   f = Onion
+
+
+=== Precisions and Recall ===
+Class       Precission      Recall
+-----------------------------------
+CBC:        0.33            0.63
+CNN:        0.37            0.19
+Star:       0.31            0.3
+Reuters:    0.40            0.25
+NYT:        0.45            0.57
+Onion:      0.68            0.53
+
+Based on these numbers, I'd think that the Onion would be the most distinct, and CNN the least.
 
 ###############################################################################
 #                            3.4 Pop Stars versus News                        #
 ###############################################################################
 
-python buildarff.py Popstarts:twtts/britneyspears.twt+twtts/justinbieber.twt+twtts/katyperry.twt+twtts/ladygaga.twt+twtts/rihanna.twt+twtts/taylorswift13.twt News:twtts/CBCNews.twt+twtts/cnn.twt+twtts/torontostarnews.twt+twtts/Reuters.twt+twtts/nytimes.twt+twtts/TheOnion.twt arffs/popvsnews.arff
+WEKA command:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/popvsnews.arff
+
+Accuracy:
+88.719 %
+
+This is much better than the accuracy for the previous classifications. The reason for this is the distinctiveness in the classes being compared. Popstars, celebrities, and news outlets had much less variation within them independently, but when comparing pop stars to news outlets, the stylistic variation is much more significant. This comparison is also being done between 2 classes vs the previous comparisons that were between 6 each. Therefore, this comparison does not seem completely valid.
+
+When testing using only 500 tweets from each file.
+
+WEKA command:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/popvsnews_500.arff
+
+Accuracy:
+86.6 %
+
+Testing with 500 tweets from each file produced a lower accuracy. This was halving the amount of data available to the classifier.
+
+When testing using 100 tweets from each file.
+
+WEKA command:
+java -cp WEKA/weka.jar weka.classifiers.functions.SMO -x 10 -t arffs/popvsnews_100.arff
+
+Accuracy:
+84 %
+
+This reduced the accuracy even further. This pattern makes it pretty clear than reducing the amount of data reduces the accuracies, since there is less training data available.
+
 
 
 ###############################################################################
 #                               3.5 Feature Analysis                          #
 ###############################################################################
 
+I found average sentence length to be particularly useful as a feature across all the tasks.
+In general, wh words, coordinating conjunctions, emoticons (which I added) and count of numbers (which I added) were least informative across most task. In contrast, average sentence length, proper nouns, mentions (which I add), multiple exclaimation marks (which I added), and hashtags (which I added) seemed to be most predictive across tasks.
+
+Specifically, word types, such as adverbs, conjunctions etc.. don't seem like something that would vary much across writing styles. In contrast, things like average length of sentence, number of mentions and hashtags is very specific to a particular person's style of writing. Some people like to write short sentences and others don't. Some tend to use lots of hashtags, and others don't. Etc...
+
+Command Used:
+sh infogain.sh arffs/news.arff > 3.5output.txt

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import NLPlib
 import re
 import sys

@@ -1,0 +1,156 @@
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 26 class):
+	Information Gain Ranking Filter
+
+Ranked attributes:
+ 0.28415   22 multipleexclaimation
+ 0.2094    24 mentions
+ 0.1456    18 average-len-sent
+ 0.11762   12 common-nouns
+ 0.11104    9 dashes
+ 0.10376   13 proper-nouns
+ 0.09       7 commas
+ 0.08781   16 slang
+ 0.08776   14 adverbs
+ 0.08434    1 1person
+ 0.0825     8 colons-semicolons
+ 0.07849   20 number-sentences
+ 0.06227   19 average-len-tokens
+ 0.05921    5 past-tense
+ 0.04007   17 uppercase
+ 0.03527   25 numbers
+ 0.0327     3 3person
+ 0.03186   23 hashtags
+ 0.02352    2 2person
+ 0.02102    4 coord_conj
+ 0.01835   15 wh-words
+ 0.0171    10 paranthesis
+ 0.01692   11 ellipses
+ 0.00661    6 future-tense
+ 0.00489   21 emoticons
+
+Selected attributes: 22,24,18,12,9,13,7,16,14,1,8,20,19,5,17,25,3,23,2,4,15,10,11,6,21 : 25
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 26 class):
+	Information Gain Ranking Filter
+
+Ranked attributes:
+ 0.20336    9 dashes
+ 0.13528   23 hashtags
+ 0.12684   24 mentions
+ 0.09609   13 proper-nouns
+ 0.06478   17 uppercase
+ 0.06153   18 average-len-sent
+ 0.06082   22 multipleexclaimation
+ 0.05432    8 colons-semicolons
+ 0.04522   19 average-len-tokens
+ 0.04338    7 commas
+ 0.03776   12 common-nouns
+ 0.03456   11 ellipses
+ 0.03012   20 number-sentences
+ 0.02387    1 1person
+ 0.02255   16 slang
+ 0.01624   25 numbers
+ 0.01502    5 past-tense
+ 0.01243   10 paranthesis
+ 0.00983    2 2person
+ 0.0097    21 emoticons
+ 0.00819   14 adverbs
+ 0.00525    6 future-tense
+ 0         15 wh-words
+ 0          4 coord_conj
+ 0          3 3person
+
+Selected attributes: 9,23,24,13,17,18,22,8,19,7,12,11,20,1,16,25,5,10,2,21,14,6,15,4,3 : 25
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 26 class):
+	Information Gain Ranking Filter
+
+Ranked attributes:
+ 0.14955   23 hashtags
+ 0.1096    13 proper-nouns
+ 0.10497   18 average-len-sent
+ 0.07686   12 common-nouns
+ 0.03736   17 uppercase
+ 0.03681    8 colons-semicolons
+ 0.03632   24 mentions
+ 0.03561   10 paranthesis
+ 0.03346   14 adverbs
+ 0.02261   20 number-sentences
+ 0.01934    7 commas
+ 0.0175     3 3person
+ 0.01414   11 ellipses
+ 0.01399   19 average-len-tokens
+ 0.0138     1 1person
+ 0.01289    2 2person
+ 0.01253   22 multipleexclaimation
+ 0.01143   15 wh-words
+ 0.01119    4 coord_conj
+ 0.00723    9 dashes
+ 0.00643    5 past-tense
+ 0.00611   25 numbers
+ 0         16 slang
+ 0         21 emoticons
+ 0          6 future-tense
+
+Selected attributes: 23,13,18,12,17,8,24,10,14,20,7,3,11,19,1,2,22,15,4,9,5,25,16,21,6 : 25
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (supervised, Class (nominal): 26 class):
+	Information Gain Ranking Filter
+
+Ranked attributes:
+ 0.29808   20 number-sentences
+ 0.25249   22 multipleexclaimation
+ 0.24658    1 1person
+ 0.22868   18 average-len-sent
+ 0.1718    24 mentions
+ 0.16577   19 average-len-tokens
+ 0.12518    2 2person
+ 0.11719   14 adverbs
+ 0.09967   16 slang
+ 0.09788   13 proper-nouns
+ 0.0977    12 common-nouns
+ 0.07291   17 uppercase
+ 0.05523   11 ellipses
+ 0.05467   23 hashtags
+ 0.05416    3 3person
+ 0.03475    4 coord_conj
+ 0.02264   21 emoticons
+ 0.01889    5 past-tense
+ 0.01782   15 wh-words
+ 0.01387    6 future-tense
+ 0.01277   25 numbers
+ 0.01135    9 dashes
+ 0.0071     8 colons-semicolons
+ 0.00685    7 commas
+ 0.00483   10 paranthesis
+
+Selected attributes: 20,22,1,18,24,19,2,14,16,13,12,17,11,23,3,4,21,5,15,6,25,9,8,7,10 : 25
+
